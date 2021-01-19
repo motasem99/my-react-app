@@ -8,7 +8,7 @@ class BurgerIngredients extends Component {
 
         switch(this.props.type) {
             case ('bread-top'):
-                ingredient = <div style={{width: '75%', height: '4rem'}} className={classes.BreadTop}></div>
+                ingredient = <div style={{width: '75%', height: '6rem'}} className={classes.BreadTop}></div>
                 break;
             case ('bread-bottom'):
                 ingredient = <div style={{width: '75%', height: '3rem'}} className={classes.BreadBottom}></div>
