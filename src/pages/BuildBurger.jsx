@@ -6,29 +6,50 @@ import ControlBurger from '../components/ControlBurger/ControlBurger'
 
 class BuildBurger extends Component {
     state = {
-        
+        ingredients: {
+            salad: 0,
+            bacon: 0,
+            cheese: 0,
+            meat: 0
+        }
+    }
+
+    increaseIngredients = (name)=>{
+        this.setState({
+            ...this.state,
+            ingredients: {
+                ...this.state.ingredients,
+                [name]: this.state.ingredients[name] + 1
+            }
+        })
+    }
+
+    clickLessHandler = (name) => {
+        this.setState({
+            ...this.state,
+            ingredients: {
+                ...this.state.ingredients,
+                [name]: this.state.ingredients[name] - 1
+            }
+        })
     }
 
     orderNow = () => {
-        console.log('Order Now')
-    }
-
-    clickMoreHandler = () => {
-        console.log('Click more handler')
-    }
-
-    clickLessHandler = () => {
-        console.log('Click Less handler')
+        this.setState({ ingredients: 'change state' })
     }
 
     render () {
         return (
             <div className={classes.Main}>
-                <Burger />
+                <Burger
+                    ingredients={this.state.ingredients}
+                />
                 <ControlBurger
-                clickHandler={this.orderNow}
-                clickMoreHandler={this.clickMoreHandler}
-                clickLessHandler={this.clickLessHandler} />
+                    clickHandler={this.orderNow}
+                    clickLessHandler={this.clickLessHandler}
+                    statess={this.state.ingredients}
+                    increaseIngredients={this.increaseIngredients}
+                />
             </div>
         )
     }
