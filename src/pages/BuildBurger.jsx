@@ -29,7 +29,7 @@ class BuildBurger extends Component {
             ...this.state,
             ingredients: {
                 ...this.state.ingredients,
-                [name]: this.state.ingredients[name] - 1
+                [name]: this.state.ingredients[name] !== 0 ? this.state.ingredients[name] -1 : 0
             }
         })
     }
