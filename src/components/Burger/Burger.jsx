@@ -16,7 +16,7 @@ const Burger =(props) => {
             Object.keys(ingredients).map(item => {
                 if(ingredients[item] > 0){
                     let items = []
-                    for (let i = 0; i< ingredients[item]; i++){
+                    for(let i = 0; i < ingredients[item]; i++){
                         items.push(<BurgerIngredients key={i} type={item} />)
                     }
                     return items
