@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {Component} from 'react'
 
 import classes from './Checkout.module.css'
-import BurgerIngredients from '../components/BurgerIngredients/BurgerIngredients'
 import Burger from '../components/Burger/Burger'
 
-const Checkout = (props) => (
-    <div className={classes.Main}>
+class Checkout extends Component {
+    render() {
+        console.log(this.props.location)
+        return (
+            <div className={classes.Main}>
         <div className={classes.Burger}>
         <h2>We Hope It Taste Is Well</h2>
             <Burger />
@@ -29,6 +31,7 @@ const Checkout = (props) => (
             </form>
         </div>
     </div>
-)
-
+        )
+    }
+}
 export default Checkout

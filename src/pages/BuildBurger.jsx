@@ -24,6 +24,7 @@ class BuildBurger extends Component {
         show: false
     }
 
+
     increaseIngredients = (name)=>{
         this.setState({
             ...this.state,
@@ -63,6 +64,8 @@ class BuildBurger extends Component {
             price: sum,
             show: true
         })
+    console.log(this.props.location)
+
     }
 
     removeShow = () => {
@@ -87,6 +90,7 @@ class BuildBurger extends Component {
             <div className={classes.Main}>
                 <Burger
                     ingredients={this.state.ingredients}
+                    location={this.props.location}
                 />
                 <ControlBurger
                     orderNow={this.orderNow}
