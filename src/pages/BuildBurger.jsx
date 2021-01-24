@@ -20,7 +20,7 @@ class BuildBurger extends Component {
             cheese: 0,
             meat: 0
         },
-        prise: 4.00,
+        price: 4,
         show: false
     }
 
@@ -44,8 +44,25 @@ class BuildBurger extends Component {
         })
     }
 
-    orderNow = () => {
-        this.setState({ show: true})
+    orderNow = (item) => {
+
+        const objIngredients = Object.keys(this.state.ingredients).map(key => {
+            return this.state.ingredients[key]
+        })
+
+        const objPrice = Object.keys(priceIngredients).map(key => {
+            return priceIngredients[key]
+        })
+
+        let sum = 0
+        for(let i = 0; i < objIngredients.length; i++ ){
+            sum += objIngredients[i] * objPrice[i]
+        }
+
+        this.setState({
+            price: sum,
+            show: true
+        })
     }
 
     removeShow = () => {
@@ -82,7 +99,8 @@ class BuildBurger extends Component {
                     <Dropdown
                     remove={this.removeShow}
                     continueOrderNow={this.continueOrderNow}
-                    ingredients={this.state.ingredients} />
+                    ingredients={this.state.ingredients}
+                    price={this.state.price} />
                         : null
                 }
             </div>

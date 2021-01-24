@@ -8,8 +8,8 @@ const Checkout = (props) => (
     <div className={classes.Main}>
         <div className={classes.Burger}>
         <h2>We Hope It Taste Is Well</h2>
-            <Burger ingredients={props.ingredients} />
-        </div>
+            <Burger />
+    </div>
 
         <button className={classes.Success}>CANCEL</button>
         <button className={classes.Danger}>CONTINUE</button>

@@ -17,7 +17,7 @@ const Dropdown = (props) => {
                     <li>Bacon: {props.ingredients.bacon}</li>
                     <li>Cheese: {props.ingredients.cheese}</li>
                 </ul>
-                <h3>Total Price: 4.00</h3>
+                <h3>Total Price: {props.price}</h3>
                 <p>Continue to Checkout ?</p>
                 <button className={classes.Success} onClick={remove}>CANCEL</button>
                 <button className={classes.Danger} onClick={continueOrderNow}>CONTINUE</button>
