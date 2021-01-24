@@ -2,17 +2,13 @@ import React from 'react'
 
 import classes from './Checkout.module.css'
 import BurgerIngredients from '../components/BurgerIngredients/BurgerIngredients'
+import Burger from '../components/Burger/Burger'
 
 const Checkout = (props) => (
     <div className={classes.Main}>
         <div className={classes.Burger}>
         <h2>We Hope It Taste Is Well</h2>
-            <BurgerIngredients type='bread-top' />
-            <BurgerIngredients type='salad' />
-            <BurgerIngredients type='bacon' />
-            <BurgerIngredients type='cheese' />
-            <BurgerIngredients type='meat' />
-            <BurgerIngredients type='bread-bottom' />
+            <Burger ingredients={props.ingredients} />
         </div>
 
         <button className={classes.Success}>CANCEL</button>

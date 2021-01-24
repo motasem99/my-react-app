@@ -5,6 +5,13 @@ import Burger from '../components/Burger/Burger'
 import ControlBurger from '../components/ControlBurger/ControlBurger'
 import Dropdown from '../components/Dropdown/Dropdown.js'
 
+
+const priceIngredients = {
+    salad: 1.3,
+    bacon: 1.7,
+    meat: 2.5,
+    cheese: 3.4
+}
 class BuildBurger extends Component {
     state = {
         ingredients: {
@@ -13,6 +20,7 @@ class BuildBurger extends Component {
             cheese: 0,
             meat: 0
         },
+        prise: 4.00,
         show: false
     }
 
@@ -37,12 +45,24 @@ class BuildBurger extends Component {
     }
 
     orderNow = () => {
-        // this.props.history.push('./checkout')
         this.setState({ show: true})
     }
 
     removeShow = () => {
         this.setState({ show: false })
+    }
+
+    continueOrderNow = () => {
+        const queryParams = []
+
+        for(let i in this.state.ingredients) {
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
+        }
+        const queryString = queryParams.join('&')
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        })
     }
 
     render () {
@@ -57,7 +77,14 @@ class BuildBurger extends Component {
                     ingredients={this.state.ingredients}
                     increaseIngredients={this.increaseIngredients}
                 />
-                {this.state.show ? <Dropdown remove={this.removeShow} /> : null}
+                {
+                this.state.show ?
+                    <Dropdown
+                    remove={this.removeShow}
+                    continueOrderNow={this.continueOrderNow}
+                    ingredients={this.state.ingredients} />
+                        : null
+                }
             </div>
         )
     }
