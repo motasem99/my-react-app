@@ -58,3 +58,35 @@
   margin: 10px;
   font-weight: bold;
 }
+
+.Form {
+  border: 1px solid #ccc;
+  width: 450px;
+  margin: 20px auto;
+  display: block;
+  box-sizing: border-box;
+}
+
+.Form input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 15px;
+}
+
+.Form select {
+  width: 86%;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.Form button {
+  width: 150px;
+  padding: 10px;
+  font: inherit;
+  font-weight: bold;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  color: rgb(143, 94, 3);
+}
