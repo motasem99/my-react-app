@@ -1,4 +1,6 @@
 .Form {
+  left: 25%;
+  top: 65%;
   border: 1px solid #ccc;
   width: 450px;
   margin: 20px auto;
