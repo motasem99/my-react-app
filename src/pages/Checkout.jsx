@@ -8,38 +8,26 @@ import Burger from '../components/Burger/Burger'
 class Checkout extends Component {
     state = {
         error: false,
-        nameOfInput: {
-            name: '',
-            street: '',
-            zipCode: '',
-            country: '',
-            mail: ''
-        },
+        nameOfInput: ""
     }
 
     infoForm = (event) => {
         event.preventDefault()
 
-        const nameOf = Object.keys(this.state.nameOfInput).map(item => {
-            return this.state.nameOfInput[item]
-        })
-
-        console.log(nameOf)
-
         if(event.target.name.value === ""){
-            this.setState({ error: true })
+            this.setState({ error: true, nameOfInput: "name" })
         }
         if(event.target.street.value === "") {
-            this.setState({ error: true })
+            this.setState({ error: true, nameOfInput: 'street' })
         }
         if(event.target.zipCode.value === ""){
-            this.setState({ error: true })
+            this.setState({ error: true, nameOfInput: "zipCode" })
         }
         if(event.target.country.value === ""){
-            this.setState({ error: true })
+            this.setState({ error: true, nameOfInput: "country" })
         }
         if(event.target.mail.value === ""){
-            this.setState({ error: true })
+            this.setState({ error: true, nameOfInput: "mail" })
         }
     }
 
@@ -61,7 +49,7 @@ class Checkout extends Component {
                     <h3>Enter Your Contact Data</h3>
                         {
                             this.state.error &&
-                            <div className={classes.Error}>{} is missing</div>
+                            <div className={classes.Error}>{this.state.nameOfInput} is missing</div>
                         }
                         <input type="text" name="name" placeholder="Your Name" />
                         <input type="text" name="street" placeholder="Street" />
