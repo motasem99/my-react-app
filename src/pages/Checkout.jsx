@@ -5,10 +5,12 @@ import qs from 'query-string'
 import classes from './Checkout.module.css'
 import Burger from '../components/Burger/Burger'
 
+import FormInfo from '../components/FormInfo/FormInfo.js'
 class Checkout extends Component {
     state = {
         error: false,
-        nameOfInput: ""
+        nameOfInput: "",
+        show: false
     }
 
     infoForm = (event) => {
@@ -31,6 +33,14 @@ class Checkout extends Component {
         }
     }
 
+    showInfoForm = () => {
+        this.setState({ show: true })
+    }
+
+    removeInfoForm = () => {
+        this.setState({ show: false })
+    }
+
     render() {
         const obj = qs.parse(this.props.location.search)
 
@@ -41,28 +51,18 @@ class Checkout extends Component {
                         <Burger ingredients={obj} />
                 </div>
 
-                <button className={classes.Success}>CANCEL</button>
-                <button className={classes.Danger}>CONTINUE</button>
+                <button className={classes.Success} onClick={this.removeInfoForm}>CANCEL</button>
+                <button className={classes.Danger} onClick={this.showInfoForm}>CONTINUE</button>
 
-                <div>
-                    <form onSubmit={this.infoForm} className={classes.Form}>
-                    <h3>Enter Your Contact Data</h3>
-                        {
-                            this.state.error &&
-                            <div className={classes.Error}>{this.state.nameOfInput} is missing</div>
-                        }
-                        <input type="text" name="name" placeholder="Your Name" />
-                        <input type="text" name="street" placeholder="Street" />
-                        <input type="text" name="zipCode" placeholder="ZIP Code" />
-                        <input type="text" name="country" placeholder="Country" />
-                        <input type="text" name="mail" placeholder="Your E-Mail" />
-                        <select>
-                            <option>Fastest</option>
-                            <option>Cheapest</option>
-                        </select>
-                        <button type="submit">ORDER</button>
-                    </form>
-                </div>
+                {
+                    this.state.show ?
+                    <FormInfo
+                        infoForm={this.infoForm}
+                        nameOfInput={this.state.nameOfInput}
+                        error={this.state.error}
+                        />
+                    : null
+            }
             </div>
         )
     }
