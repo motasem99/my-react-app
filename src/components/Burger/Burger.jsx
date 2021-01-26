@@ -25,6 +25,5 @@ const Burger =(props) => {
             </div>
     </div>
     )
-    
 }
 export default Burger

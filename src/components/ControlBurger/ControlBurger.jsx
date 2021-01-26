@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 import classes from './ControlBurger.module.css'
 
 const ControlBurger = (props) =>  {
@@ -8,7 +7,7 @@ const ControlBurger = (props) =>  {
 
         return (
             <div className={classes.BuildControls}>
-                <p>Current Price: <strong>4.00</strong></p>
+                <p>Current Price: <strong>{props.price}</strong></p>
                 <div className={classes.BuildControl}>
                     <label className={classes.Label}>Salad</label>
                     <button onClick={()=> clickLessHandler("salad")} className={(props.ingredients.salad > 0 ? classes.Less : classes.Disabled)}>Less</button>

@@ -31,7 +31,7 @@ class BuildBurger extends Component {
             ingredients: {
                 ...this.state.ingredients,
                 [name]: this.state.ingredients[name] + 1
-            }
+            },
         })
     }
 
@@ -64,7 +64,7 @@ class BuildBurger extends Component {
             price: sum,
             show: true
         })
-    console.log(this.props.location)
+            console.log(this.props.location)
 
     }
 
@@ -97,6 +97,7 @@ class BuildBurger extends Component {
                     clickLessHandler={this.clickLessHandler}
                     ingredients={this.state.ingredients}
                     increaseIngredients={this.increaseIngredients}
+                    price={this.state.price.toFixed(2)}
                 />
                 {
                 this.state.show ?
@@ -104,7 +105,7 @@ class BuildBurger extends Component {
                     remove={this.removeShow}
                     continueOrderNow={this.continueOrderNow}
                     ingredients={this.state.ingredients}
-                    price={this.state.price} />
+                    price={this.state.price.toFixed(2)} />
                         : null
                 }
             </div>
