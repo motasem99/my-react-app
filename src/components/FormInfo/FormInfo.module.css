@@ -2,10 +2,23 @@
   left: 25%;
   top: 65%;
   border: 1px solid #ccc;
-  width: 450px;
+  width: 0;
   margin: 20px auto;
   display: block;
   box-sizing: border-box;
+  transition: height 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.FormTransition {
+  width: 450px;
+}
+
+.InfoForm {
+  display: none;
+}
+
+.ShowForm {
+  display: block;
 }
 
 .Form input {

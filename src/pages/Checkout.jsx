@@ -54,15 +54,12 @@ class Checkout extends Component {
                 <button className={classes.Success} onClick={this.removeInfoForm}>CANCEL</button>
                 <button className={classes.Danger} onClick={this.showInfoForm}>CONTINUE</button>
 
-                {
-                    this.state.show ?
                     <FormInfo
                         infoForm={this.infoForm}
                         nameOfInput={this.state.nameOfInput}
                         error={this.state.error}
+                        show={this.state.show}
                         />
-                    : null
-            }
             </div>
         )
     }

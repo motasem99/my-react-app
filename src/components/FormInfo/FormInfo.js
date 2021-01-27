@@ -4,12 +4,11 @@ import classes from './FormInfo.module.css'
 
 const FormInfo = (props) => {
 
-    const {infoForm} = props
+    const {infoForm, show} = props
 
     return (
-        <div className={classes.DropForm }>
-            <div className={classes.Form}>
-                <form onSubmit={infoForm}>
+            <div className={`${classes.Form} ${show&&classes.FormTransition}`}>
+                <form onSubmit={infoForm} className={`${classes.InfoForm} ${show&&classes.ShowForm}`}>
                     <h3>Enter Your Contact Data</h3>
                     {
                         props.error &&
@@ -27,7 +26,6 @@ const FormInfo = (props) => {
                     <button type="submit">ORDER</button>
                 </form>
             </div>
-        </div>
         )
     }
 
