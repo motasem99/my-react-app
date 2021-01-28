@@ -4,6 +4,7 @@ import classes from './BuildBurger.module.css'
 import Burger from '../components/Burger/Burger'
 import ControlBurger from '../components/ControlBurger/ControlBurger'
 import Dropdown from '../components/Dropdown/Dropdown.js'
+import firebase from '../firebase.js'
 
 
 const priceIngredients = {
@@ -21,7 +22,7 @@ class BuildBurger extends Component {
             meat: 0
         },
         price: 4,
-        show: false
+        show: false,
     }
 
 
@@ -45,7 +46,7 @@ class BuildBurger extends Component {
         })
     }
 
-    orderNow = (item) => {
+    orderNow = async (item) => {
 
         const objIngredients = Object.keys(this.state.ingredients).map(key => {
             return this.state.ingredients[key]
@@ -64,15 +65,14 @@ class BuildBurger extends Component {
             price: sum,
             show: true
         })
-            console.log(this.props.location)
-
     }
+
 
     removeShow = () => {
         this.setState({ show: false })
     }
 
-    continueOrderNow = () => {
+    continueOrderNow = async () => {
         const queryParams = []
 
         for(let i in this.state.ingredients) {
@@ -83,6 +83,14 @@ class BuildBurger extends Component {
             pathname: '/checkout',
             search: '?' + queryString
         })
+        try {
+            await firebase.database().ref('ingredients').set({
+                ingredients: this.state.ingredients,
+                price: this.state.price
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     render () {
@@ -108,6 +116,7 @@ class BuildBurger extends Component {
                     price={this.state.price.toFixed(2)} />
                         : null
                 }
+                <button onClick={this.add}>add anything</button>
             </div>
         )
     }
