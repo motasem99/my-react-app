@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 
 import classes from './Orders.module.css';
 import firebase from '../firebase.js';
+import Spinner from '../components/Spinner/Spinner.js';
 
 class Orders extends Component {
   state = {
-    ingredients: [],
     loading: true,
+    ingredients: [],
   };
 
   componentDidMount() {
@@ -24,7 +25,7 @@ class Orders extends Component {
 
   render() {
     return this.state.loading ? (
-      <div>loading....</div>
+      <Spinner />
     ) : (
       [
         this.state.ingredients.map((item) => (
@@ -55,7 +56,6 @@ class Orders extends Component {
 }
 
 export default Orders;
-
 /**
  * 1. when u got data u need to wait use gui by use loading state
  * 2. when u got data from firebase u need to change it from object to arr
